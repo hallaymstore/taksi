@@ -1,0 +1,14 @@
+{
+  "name": "HALLAYM Taxi",
+  "short_name": "Taxi",
+  "description": "Premium mobile taxi platform for clients and drivers",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#070910",
+  "theme_color": "#090b12",
+  "orientation": "portrait-primary",
+  "icons": [
+    {"src":"/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
