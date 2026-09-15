@@ -36,7 +36,7 @@ module.exports = function attachR2(app) {
 
   const uploadSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', index: true },
-    kind: { type: String, enum: ['avatar','license','idcard','vehicle','selfie'], index: true },
+    kind: { type: String, enum: ['avatar','license','idcard','vehicle','selfie','payment'], index: true },
     key: { type: String, required: true }, url: { type: String, required: true }, mime: String,
     originalName: String, size: Number, status: { type: String, enum: ['active','deleted'], default: 'active' }
   }, { timestamps: true });
@@ -71,9 +71,9 @@ module.exports = function attachR2(app) {
     try {
       if (!configured) return res.status(503).json({ error: 'R2 sozlanmagan' });
       const kind = safe(req.params.kind, 20).toLowerCase();
-      const allowedKinds = ['avatar','license','idcard','vehicle','selfie'];
+      const allowedKinds = ['avatar','license','idcard','vehicle','selfie','payment'];
       if (!allowedKinds.includes(kind)) return res.status(400).json({ error: 'Fayl turi noto‘g‘ri' });
-      if (kind !== 'avatar' && req.storageUser.role !== 'driver') return res.status(403).json({ error: 'Bu upload faqat haydovchilar uchun' });
+      if (!['avatar','payment'].includes(kind) && req.storageUser.role !== 'driver') return res.status(403).json({ error: 'Bu upload faqat haydovchilar uchun' });
       const mime = String(req.headers['content-type'] || '').split(';')[0].toLowerCase();
       const originalName = decodeURIComponent(String(req.headers['x-file-name'] || 'file'));
       const ext = extensionFor(mime, originalName);
@@ -90,7 +90,7 @@ module.exports = function attachR2(app) {
       if (kind === 'avatar') {
         const User = mongoose.model('User');
         await User.updateOne({ _id: req.storageUser._id }, { avatar: url });
-      } else {
+      } else if (kind !== 'payment') {
         const Driver = mongoose.model('Driver');
         await Driver.updateOne({ userId: req.storageUser._id }, { documentStatus: 'pending', documentNote: '' });
       }
