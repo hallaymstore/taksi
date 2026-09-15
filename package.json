@@ -1,12 +1,12 @@
 {
   "name": "hallaym-taksi",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
-  "description": "Premium mobile-first taxi PWA with client, driver and admin panels",
-  "main": "bootstrap-v3.js",
+  "description": "Premium mobile-first taxi PWA with smart dispatch, realtime tracking, payments, client, driver and admin panels",
+  "main": "bootstrap-v4.js",
   "scripts": {
-    "start": "node bootstrap-v3.js",
-    "dev": "node --watch bootstrap-v3.js"
+    "start": "node bootstrap-v4.js",
+    "dev": "node --watch bootstrap-v4.js"
   },
   "engines": { "node": ">=20" },
   "dependencies": {
