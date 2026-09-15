@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#090b12" />
+  <meta name="theme-color" content="#080b12" />
   <meta name="description" content="HALLAYM Taxi — premium mobil taksi buyurtma platformasi" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://unpkg.com" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <link rel="stylesheet" href="/app.css" />
+  <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.7.1/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="/v2.css?v=20260915-2" />
   <title>HALLAYM Taxi</title>
 </head>
 <body>
   <div id="toastHost" class="toast-host"></div>
-  <div id="boot" class="boot"><div class="brand-mark">H</div><div><strong>HALLAYM Taxi</strong><span>Premium mobility</span></div></div>
   <main id="app"></main>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/maplibre-gl@5.7.1/dist/maplibre-gl.js"></script>
   <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
-  <script src="/app.js"></script>
+  <script src="/v2.js?v=20260915-2"></script>
+  <script src="/runtime-v2.js?v=20260915-2"></script>
 </body>
 </html>
