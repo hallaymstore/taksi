@@ -1,5 +1,5 @@
-const CACHE='hallaym-taxi-v2-20260915-2';
-const STATIC=['/','/index.html','/v2.css?v=20260915-2','/v2.js?v=20260915-2','/runtime-v2.js?v=20260915-2','/manifest.webmanifest','/icon.svg'];
+const CACHE='hallaym-taxi-v2-20260915-3';
+const STATIC=['/','/index.html','/v2.css?v=20260915-3','/v2.js?v=20260915-3','/runtime-v2.js?v=20260915-3','/r2-ui.css?v=20260915-3','/r2-ui.js?v=20260915-3','/manifest.webmanifest','/icon.svg'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(STATIC).catch(()=>{})))});
 self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const k of await caches.keys())if(k!==CACHE)await caches.delete(k);await self.clients.claim()})()));
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET')return;if(e.request.mode==='navigate'){e.respondWith(fetch(e.request).then(r=>{const x=r.clone();caches.open(CACHE).then(c=>c.put('/index.html',x));return r}).catch(()=>caches.match('/index.html')));return}if(u.origin===location.origin){e.respondWith(fetch(e.request).then(r=>{if(r.ok){const x=r.clone();caches.open(CACHE).then(c=>c.put(e.request,x))}return r}).catch(()=>caches.match(e.request)));}});
